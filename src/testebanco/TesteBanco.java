@@ -1,12 +1,16 @@
 package testebanco;
 
 import java.util.ArrayList;
+import webservice.dao.AlunoDao;
 import webservice.dao.AtividadeDao;
+import webservice.dao.ProfessorDao;
 import webservice.dao.TurmaDao;
 import webservice.entidades.atividade.Atividade;
 import webservice.entidades.atividade.Classificacao;
 import webservice.entidades.atividade.Endereco;
 import webservice.entidades.atividade.Pontuacao;
+import webservice.entidades.pessoa.Aluno;
+import webservice.entidades.pessoa.Professor;
 import webservice.entidades.turma.Turma;
 
 /**
@@ -83,6 +87,7 @@ public class TesteBanco {
         for (int i = 0; i < 10; i++) {
             arrayList.add("aluno" + i);
         }
+        arrayList.add("201317770234");
         turma.setAlunos(arrayList);
         
         new TurmaDao().insert(turma);
@@ -108,10 +113,42 @@ public class TesteBanco {
                 System.out.println("Alunos: " + turmas.get(i).getAlunos().get(j));
             }
         }
+        
+        
+        Turma turma = new Turma();
+        
+        turma.setNome("Refri preta");
+        turma.setCurso("Informática");
+        turma.setAnoInicio(2013);
+        turma.setPontos(1000);
+        
+        ArrayList<String> arrayList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            arrayList.add("aluno" + i);
+        }
+        arrayList.add("201317770066");
+        turma.setAlunos(arrayList);
+        
+        new TurmaDao().update("5833752135659e2b65463bd8", turma);
+        
+        
+        Aluno aluno = new Aluno();
+        aluno.setNome("Eduan");
+        aluno.setEmail("eduan@mail.com");
+        aluno.setSenha("123456");
+        aluno.setMatricula("201317770066");
+        
+        new AlunoDao().insert(aluno);
         */
-        
-        
 
-
+        
+        Professor p = new Professor();
+        
+        p.setNome("teste2");
+        p.setEmail("mail2@ifsul.edu.br");
+        p.setSenha("2souza123");
+        p.setSiape("2109832");
+        
+        new ProfessorDao().insert(p);
     }
 }
